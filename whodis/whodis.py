@@ -14,12 +14,12 @@ FILTERED_DIRS = [
 ]
 
 FILE_EXTENSIONS = [
-    ".py",  # Python
-    ".md",  # Markdown
-    ".js",  # JavaScript
-    ".go",  # Go
-    ".java",  # Java
-    ".rb",  # Ruby
+    "py",  # Python
+    "md",  # Markdown
+    "js",  # JavaScript
+    "go",  # Go
+    "java",  # Java
+    "rb",  # Ruby
 ]
 
 class WhoDis():
@@ -102,7 +102,24 @@ class WhoDis():
                 "typscript": ['something.ts']
             }
         """
-        return {}
+        breakdown = {}
+
+        for file in self.files:
+            if "." in file:
+                extension = file.partition('.')[2]
+                if extension in FILE_EXTENSIONS:
+                    if extension in breakdown:
+                        breakdown[extension].append(file)
+                    else:
+                        breakdown[extension] = [file]
+
+        if breakdown == {}:
+            raise IOError("Could not determine the language associated with "\
+                          "any of the source files. Either the files do "\
+                          "not contain any source code or our parser does "\
+                          "not support the language being used.")
+
+        return breakdown
 
     def _determine_dominant_language(self):
         """
