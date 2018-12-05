@@ -61,12 +61,3 @@ class WhoDis():
     def _eval_file_extensions(self):
         """ Counts the extensions of each file in self.files """
         return
-
-    
-                
-
-path = "/home/josh/repos/alppb"
-blah = WhoDis()
-blah.determine_language(path)
-print(len(blah.files))
-print(blah.files)
