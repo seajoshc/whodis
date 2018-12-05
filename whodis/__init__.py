@@ -1,1 +1,1 @@
-from .walk import WhoDis
+from .whodis import WhoDis
