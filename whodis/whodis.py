@@ -133,7 +133,17 @@ class WhoDis():
         str
             The dominant language among all source code files.
         """
-        return ""
+        dominant_language = ""
+        dominant_language_length = 0
+
+        for language in self.files_by_language:
+            num_files_in_language = len(self.files_by_language[language])
+            if num_files_in_language > dominant_language_length:
+                dominant_language = language
+                dominant_language_length = num_files_in_language
+            # TODO elif: num_files_in_language == dominant_language_length:
+
+        return dominant_language
 
     def _determine_all_languages(self):
         """
