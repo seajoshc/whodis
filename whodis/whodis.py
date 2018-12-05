@@ -17,6 +17,9 @@ FILTERED_DIRS = [
 class WhoDis():
     def __init__(self):
         self.files = []
+        self.language = ""
+        self.files_by_language = {}
+        self.all_languages = []
 
     def determine_language(self, path):
         """
