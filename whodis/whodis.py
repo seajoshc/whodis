@@ -5,9 +5,9 @@ from os import walk
 
 
 FILTERED_DIRS = [
-    ".git", # Git
-    "venv", # Common Python Virtual Environment
-    "__pycache__", # Python Cache
+    ".git",  # Git
+    "venv",  # Common Python Virtual Environment
+    "__pycache__",  # Python Cache
     "build",
     "dist",
     "alppb.egg-info",
@@ -21,15 +21,11 @@ class WhoDis():
     def determine_language(self, path):
         """ Determines the dominant programming language for a path """
         self.files = self._recursively_get_files_in_path(path)
-        
 
-    ####################
-    # Private Functions
-    ####################
     def _recursively_get_files_in_path(self, path: str):
-        """ 
-        Use os.walk to recurse through a path and return a list of files. 
-        Filters out files from any directory in FILTERED_DIRS. If no files 
+        """
+        Use os.walk to recurse through a path and return a list of files.
+        Filters out files from any directory in FILTERED_DIRS. If no files
         are returned, an IOError exception is raised.
 
         Parameters
@@ -54,9 +50,8 @@ class WhoDis():
         if files == []:
             raise IOError("No files in {}. Is it a valid directory?"
                           .format(path))
-        
-        return files
 
+        return files
 
     def _eval_file_extensions(self):
         """ Counts the extensions of each file in self.files """
