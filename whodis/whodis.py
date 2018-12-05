@@ -19,7 +19,16 @@ class WhoDis():
         self.files = []
 
     def determine_language(self, path):
-        """ Determines the dominant programming language for a path """
+        """
+        Determines the dominant programming language across all files
+        in a given path. This function sets multiple attributes in the process:
+            1) self.files - A list of all files present in the directory and
+            any subdirectories. Filtered files are not in the list.
+            2) self.language - The dominant language across all files.
+            3) self.files_by_language - For each language present, a list of
+            all files for each language.
+            4) self.all_languages - A list of all languages across all files.
+        """
         self.files = self._recursively_get_files_in_path(path)
 
     def _recursively_get_files_in_path(self, path: str):
