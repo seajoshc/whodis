@@ -22,6 +22,7 @@ FILE_EXTENSIONS = [
     "rb",  # Ruby
 ]
 
+
 class WhoDis():
     def __init__(self):
         self.files = []
@@ -114,9 +115,9 @@ class WhoDis():
                         breakdown[extension] = [file]
 
         if breakdown == {}:
-            raise IOError("Could not determine the language associated with "\
-                          "any of the source files. Either the files do "\
-                          "not contain any source code or our parser does "\
+            raise IOError("Could not determine the language associated with "
+                          "any of the source files. Either the files do "
+                          "not contain any source code or our parser does "
                           "not support the language being used.")
 
         return breakdown
