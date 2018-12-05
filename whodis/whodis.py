@@ -157,4 +157,9 @@ class WhoDis():
         list
             A list of all languages present among all source code files.
         """
-        return []
+        languages = []
+
+        for language in self.files_by_language:
+            languages.append(language)
+
+        return languages
