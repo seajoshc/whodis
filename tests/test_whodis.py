@@ -23,6 +23,11 @@ def test_determine_language_with_valid_path():
     assert blah.language != ""
     assert blah.language == 'py'
 
+    # Tests for self.all_languages.
+    assert type(blah.all_languages) is list
+    assert blah.all_languages != []
+    assert blah.all_languages == ['py', 'md']
+
 
 def test_determine_language_with_invalid_path_raises_exception():
     """ An invalid path should raise an IOError """
