@@ -31,8 +31,17 @@ class WhoDis():
             3) self.files_by_language - For each language present, a list of
             all files for each language.
             4) self.all_languages - A list of all languages across all files.
+
+        Parameters
+        ----------
+        path : str
+            The path to walk through. For example, "/home/user/source_code".
+
+        Returns
+        -------
         """
         self.files = self._recursively_get_files_in_path(path)
+        self.language = self._determine_dominant_language()
 
     def _recursively_get_files_in_path(self, path: str):
         """
@@ -65,6 +74,16 @@ class WhoDis():
 
         return files
 
-    def _eval_file_extensions(self):
-        """ Counts the extensions of each file in self.files """
-        return
+    def _determine_dominant_language(self):
+        """
+        Looks at self.files_by_language and determines the dominant language.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        str
+            The dominant language among all source code files.
+        """
+        return ""
