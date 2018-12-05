@@ -8,12 +8,20 @@ def test_determine_language_with_valid_path():
     path = '/home/josh/repos/alppb'  # TODO this should be a mocked filesystem
     blah = WhoDis()
     blah.determine_language(path)
+
+    # Tests for self.files.
     assert type(blah.files) is list
     assert len(blah.files) > 0
 
+    # Tests for self.files_by_language.
     assert type(blah.files_by_language) is dict
     assert len(blah.files_by_language.keys()) > 0
     assert len(blah.files_by_language['py']) > 0
+
+    # Tests for self.language.
+    assert type(blah.language) is str
+    assert blah.language != ""
+    assert blah.language == 'py'
 
 
 def test_determine_language_with_invalid_path_raises_exception():
