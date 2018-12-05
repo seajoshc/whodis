@@ -13,6 +13,14 @@ FILTERED_DIRS = [
     "alppb.egg-info",
 ]
 
+FILE_EXTENSIONS = [
+    ".py",  # Python
+    ".md",  # Markdown
+    ".js",  # JavaScript
+    ".go",  # Go
+    ".java",  # Java
+    ".rb",  # Ruby
+]
 
 class WhoDis():
     def __init__(self):
