@@ -20,19 +20,13 @@ class WhoDis():
 
     def language(self, path):
         """ Determines the dominant programming language for a path """
-        for _dirpath, dirnames, filenames in walk(path):
-            # First, remove any filtered directories.
-            for dir_to_filter in FILTERED_DIRS:
-                if dir_to_filter in dirnames:
-                    dirnames.remove(dir_to_filter)
-
-            self.files.extend(filenames)
-
+        self.files = self._recursively_get_files_in_path(path)
+        
 
     ####################
     # Private Functions
     ####################
-    def _walk_path(self, path: str):
+    def _recursively_get_files_in_path(self, path: str):
         """ 
         Use os.walk to recurse through a path and return a list of files. 
         Filters out files from any directory in FILTERED_DIRS
@@ -47,7 +41,16 @@ class WhoDis():
         list : str
             A list of filenames from the filtered path.
         """
-        return
+        files = []
+        for _dirpath, dirnames, filenames in walk(path):
+            # First, remove any filtered directories.
+            for dir_to_filter in FILTERED_DIRS:
+                if dir_to_filter in dirnames:
+                    dirnames.remove(dir_to_filter)
+
+            files.extend(filenames)
+        
+        return files
 
 
     def _eval_file_extensions(self):
