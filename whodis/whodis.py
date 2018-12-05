@@ -27,9 +27,9 @@ class WhoDis():
         in a given path. This function sets multiple attributes in the process:
             1) self.files - A list of all files present in the directory and
             any subdirectories. Filtered files are not in the list.
-            2) self.language - The dominant language across all files.
-            3) self.files_by_language - For each language present, a list of
+            2) self.files_by_language - For each language present, a list of
             all files for each language.
+            3) self.language - The dominant language across all files.
             4) self.all_languages - A list of all languages across all files.
 
         Parameters
@@ -41,7 +41,9 @@ class WhoDis():
         -------
         """
         self.files = self._recursively_get_files_in_path(path)
+        self.files_by_language = self._breakdown_by_language()
         self.language = self._determine_dominant_language()
+        self.all_languages = self._determine_all_languages()
 
     def _recursively_get_files_in_path(self, path: str):
         """
@@ -74,6 +76,26 @@ class WhoDis():
 
         return files
 
+    def _breakdown_by_language(self):
+        """
+        Breaks self.files down by language.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        dict
+            A dict that maps language to a list of files for that language.
+            e.g.
+            {
+                "python": ['file1.py', 'file2.py', 'file3.py'],
+                "javascript": ['blah.js', 'blorp.js'],
+                "typscript": ['something.ts']
+            }
+        """
+        return {}
+
     def _determine_dominant_language(self):
         """
         Looks at self.files_by_language and determines the dominant language.
@@ -87,3 +109,17 @@ class WhoDis():
             The dominant language among all source code files.
         """
         return ""
+
+    def _determine_all_languages(self):
+        """
+        Looks at self.files_by_language and determines all languages.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        list
+            A list of all languages present among all source code files.
+        """
+        return []
