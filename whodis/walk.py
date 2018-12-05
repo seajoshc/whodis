@@ -18,7 +18,7 @@ class WhoDis():
     def __init__(self):
         self.files = []
 
-    def language(self, path):
+    def determine_language(self, path):
         """ Determines the dominant programming language for a path """
         self.files = self._recursively_get_files_in_path(path)
         
@@ -29,7 +29,8 @@ class WhoDis():
     def _recursively_get_files_in_path(self, path: str):
         """ 
         Use os.walk to recurse through a path and return a list of files. 
-        Filters out files from any directory in FILTERED_DIRS
+        Filters out files from any directory in FILTERED_DIRS. If no files 
+        are returned, an IOError exception is raised.
 
         Parameters
         ----------
@@ -49,6 +50,10 @@ class WhoDis():
                     dirnames.remove(dir_to_filter)
 
             files.extend(filenames)
+
+        if files == []:
+            raise IOError("No files in {}. Is it a valid directory?"
+                          .format(path))
         
         return files
 
@@ -62,6 +67,6 @@ class WhoDis():
 
 path = "/home/josh/repos/alppb"
 blah = WhoDis()
-blah.language(path)
+blah.determine_language(path)
 print(len(blah.files))
 print(blah.files)
