@@ -3,10 +3,15 @@ whodis
 """
 import os
 from .common_filters import COMMON_FILTERS
+from .go_filters import GO_FILTERS
+from .java_filters import JAVA_FILTERS
+from .javascript_filters import JAVASCRIPT_FILTERS
 from .python_filters import PYTHON_FILTERS
+from .ruby_filters import RUBY_FILTERS
 
 
-FILTERED_DIRS = COMMON_FILTERS + PYTHON_FILTERS
+FILTERED_DIRS = COMMON_FILTERS + PYTHON_FILTERS + \
+    JAVASCRIPT_FILTERS + GO_FILTERS
 
 FILE_EXTENSIONS = [
     "py",  # Python
