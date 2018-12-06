@@ -9,8 +9,8 @@ def test_parse_with_valid_path(mockwalk):
     Parse a valid path with files in only one language in it.
     """
     mockwalk.return_value = [
-        ('/foo', ('bar',), ('README.md', 'requirements.txt')),
-        ('/foo/bar', (), ('__init__.py', 'main.py',)),
+        ('/foo', ['bar', 'build'], ['README.md', 'requirements.txt']),
+        ('/foo/bar', [], ['__init__.py', 'main.py',]),
     ]
     blah = WhoDis()
     blah.parse("/fake_path_yo")
@@ -42,13 +42,13 @@ def test_parse_with_valid_path_multi_lang(mockwalk):
     Parse a valid path with files in multiple languages in it.
     """
     mockwalk.return_value = [
-        ('/app', ('controllers', 'models', 'assets'), (
-            'README.md', 'Gemfile', 'Gemfile.lock')),
-        ('/app/controllers', (), (
-            'application_controller.rb', 'sessions_controller.rb')),
-        ('/app/models', (), ('blah.rb',)),
-        ('/app/assets', ('javascripts',), ()),
-        ('/app/assets', (), ('application.js',))
+        ('/app', ['controllers', 'models', 'assets'], [
+            'README.md', 'Gemfile', 'Gemfile.lock']),
+        ('/app/controllers', [], [
+            'application_controller.rb', 'sessions_controller.rb']),
+        ('/app/models', [], ['blah.rb',]),
+        ('/app/assets', ['javascripts',], []),
+        ('/app/assets', [], ['application.js',])
     ]
     blah = WhoDis()
     blah.parse("/fake_path_yo")
