@@ -2,10 +2,11 @@
 whodis
 """
 import os
+from .common_filters import COMMON_FILTERS
 from .python_filters import PYTHON_FILTERS
 
 
-FILTERED_DIRS = PYTHON_FILTERS
+FILTERED_DIRS = COMMON_FILTERS + PYTHON_FILTERS
 
 FILE_EXTENSIONS = [
     "py",  # Python
