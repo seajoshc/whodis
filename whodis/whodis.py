@@ -8,14 +8,13 @@ FILTERED_DIRS = [
     ".git",  # Git
     "venv",  # Common Python Virtual Environment
     "__pycache__",  # Python Cache
-    "build",
-    "dist",
-    "alppb.egg-info",
+    "build",  # Python
+    "dist",  # Python
+    "egg-info",  # Python
 ]
 
 FILE_EXTENSIONS = [
     "py",  # Python
-    "md",  # Markdown
     "js",  # JavaScript
     "go",  # Go
     "java",  # Java
