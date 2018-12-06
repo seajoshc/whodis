@@ -38,15 +38,20 @@ def test_determine_language_with_valid_path(mockwalk):
 
 def test_determine_language_with_invalid_path_raises_exception():
     """ An invalid path should raise an IOError """
-    path = "/lol_i-DONT(EXIST)"
+    path = "/lol_i-DONT_exist"
     blah = WhoDis()
     with pytest.raises(IOError):
         blah.determine_language(path)
 
 
-def test_determine_language_with_no_source_code_raises_exception():
-    """ A path with recognizable source code should raise an IOError """
-    path = "/tmp"
+@patch('os.walk')
+def test_determine_language_with_no_source_code_raises_exception(mockwalk):
+    """ A path without recognizable source code should raise an IOError """
+    mockwalk.return_value = [
+        ('/foo', ('bar',), ('baz',)),
+        ('/foo/bar', (), ('qux', 'quux',)),
+    ]
+    path = "/fake_path_yo"
     blah = WhoDis()
     with pytest.raises(IOError):
         blah.determine_language(path)
