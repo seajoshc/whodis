@@ -16,6 +16,7 @@ def test_determine_language_with_valid_path():
     # Tests for self.files_by_language.
     assert type(blah.files_by_language) is dict
     assert len(blah.files_by_language.keys()) > 0
+    assert "py" in blah.files_by_language.keys()
     assert len(blah.files_by_language['py']) > 0
 
     # Tests for self.language.
