@@ -10,7 +10,7 @@ def test_parse_with_valid_path(mockwalk):
     """
     mockwalk.return_value = [
         ('/foo', ['bar', 'build'], ['README.md', 'requirements.txt']),
-        ('/foo/bar', [], ['__init__.py', 'main.py',]),
+        ('/foo/bar', [], ['__init__.py', 'main.py', ]),
     ]
     blah = WhoDis()
     blah.parse("/fake_path_yo")
@@ -46,9 +46,9 @@ def test_parse_with_valid_path_multi_lang(mockwalk):
             'README.md', 'Gemfile', 'Gemfile.lock']),
         ('/app/controllers', [], [
             'application_controller.rb', 'sessions_controller.rb']),
-        ('/app/models', [], ['blah.rb',]),
-        ('/app/assets', ['javascripts',], []),
-        ('/app/assets', [], ['application.js',])
+        ('/app/models', [], ['blah.rb', ]),
+        ('/app/assets', ['javascripts', ], []),
+        ('/app/assets', [], ['application.js', ])
     ]
     blah = WhoDis()
     blah.parse("/fake_path_yo")
