@@ -1,4 +1,3 @@
-from os import getcwd
 from unittest.mock import patch
 import pytest
 from whodis import WhoDis
@@ -8,7 +7,7 @@ from whodis import WhoDis
 def test_determine_language_with_valid_path(mockwalk):
     """ Determine the language using a valid path with files in it """
     mockwalk.return_value = [
-        ('/foo', ('bar',), ('README.md','requirements.txt')),
+        ('/foo', ('bar',), ('README.md', 'requirements.txt')),
         ('/foo/bar', (), ('__init__.py', 'main.py',)),
     ]
     blah = WhoDis()
