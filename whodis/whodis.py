@@ -2,16 +2,10 @@
 whodis
 """
 import os
+from .python_filters import PYTHON_FILTERS
 
 
-FILTERED_DIRS = [
-    ".git",  # Git
-    "venv",  # Common Python Virtual Environment
-    "__pycache__",  # Python Cache
-    "build",  # Python
-    "dist",  # Python
-    "egg-info",  # Python
-]
+FILTERED_DIRS = PYTHON_FILTERS
 
 FILE_EXTENSIONS = [
     "py",  # Python
