@@ -1,7 +1,7 @@
 """
 whodis
 """
-from os import walk
+import os
 
 
 FILTERED_DIRS = [
@@ -71,7 +71,7 @@ class WhoDis():
             A list of filenames from the filtered path.
         """
         files = []
-        for _dirpath, dirnames, filenames in walk(path):
+        for _dirpath, dirnames, filenames in os.walk(path):
             # First, remove any filtered directories.
             for dir_to_filter in FILTERED_DIRS:
                 if dir_to_filter in dirnames:
