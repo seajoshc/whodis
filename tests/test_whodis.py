@@ -5,7 +5,10 @@ from whodis import WhoDis
 
 @patch('os.walk')
 def test_determine_language_with_valid_path(mockwalk):
-    """ Determine the language using a valid path with files in it """
+    """
+    Determine the language using a valid path with files in
+    one language in it
+    """
     mockwalk.return_value = [
         ('/foo', ('bar',), ('README.md', 'requirements.txt')),
         ('/foo/bar', (), ('__init__.py', 'main.py',)),
@@ -19,9 +22,8 @@ def test_determine_language_with_valid_path(mockwalk):
 
     # Tests for self.files_by_language.
     assert type(blah.files_by_language) is dict
-    assert len(blah.files_by_language.keys()) == 2
+    assert len(blah.files_by_language.keys()) == 1
     assert "py" in blah.files_by_language.keys()
-    assert "md" in blah.files_by_language.keys()
     assert len(blah.files_by_language['py']) == 2
 
     # Tests for self.language.
@@ -33,7 +35,47 @@ def test_determine_language_with_valid_path(mockwalk):
     assert type(blah.all_languages) is list
     assert blah.all_languages != []
     assert "py" in blah.all_languages
-    assert "md" in blah.all_languages
+
+
+@patch('os.walk')
+def test_determine_language_with_valid_path_multi_lang(mockwalk):
+    """
+    Determine the languages using a valid path with files in multiple
+    languages in it.
+    """
+    mockwalk.return_value = [
+        ('/app', ('controllers', 'models', 'assets'),(
+            'README.md', 'Gemfile', 'Gemfile.lock')),
+        ('/app/controllers', (), (
+            'application_controller.rb', 'sessions_controller.rb')),
+        ('/app/models', (), ('blah.rb',)),
+        ('/app/assets', ('javascripts',), ()),
+        ('/app/assets', (), ('application.js',))
+    ]
+    blah = WhoDis()
+    blah.determine_language("/fake_path_yo")
+
+    # Tests for self.files.
+    assert type(blah.files) is list
+    assert len(blah.files) > 0
+
+    # Tests for self.files_by_language.
+    assert type(blah.files_by_language) is dict
+    assert len(blah.files_by_language.keys()) == 2
+    assert "rb" in blah.files_by_language.keys()
+    assert "js" in blah.files_by_language.keys()
+    assert len(blah.files_by_language['rb']) == 3
+
+    # Tests for self.language.
+    assert type(blah.language) is str
+    assert blah.language != ""
+    assert blah.language == "rb"
+
+    # Tests for self.all_languages.
+    assert type(blah.all_languages) is list
+    assert blah.all_languages != []
+    assert "rb" in blah.all_languages
+    assert "js" in blah.all_languages
 
 
 def test_determine_language_with_invalid_path_raises_exception():
