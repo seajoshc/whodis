@@ -44,7 +44,7 @@ def test_determine_language_with_valid_path_multi_lang(mockwalk):
     languages in it.
     """
     mockwalk.return_value = [
-        ('/app', ('controllers', 'models', 'assets'),(
+        ('/app', ('controllers', 'models', 'assets'), (
             'README.md', 'Gemfile', 'Gemfile.lock')),
         ('/app/controllers', (), (
             'application_controller.rb', 'sessions_controller.rb')),
