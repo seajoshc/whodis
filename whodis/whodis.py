@@ -29,14 +29,14 @@ class WhoDis():
         self.files_by_language = {}
         self.all_languages = []
 
-    def determine_language(self, path):
+    def parse(self, path):
         """
-        Determines the dominant programming language across all files
-        in a given path. This function sets multiple attributes in the process:
+        Recursively parse a path looking for source code files. This function
+        sets multiple attributes in the process:
             1) self.files - A list of all files present in the directory and
-            any subdirectories. Filtered files are not in the list.
+                any subdirectories. Filtered files are not in the list.
             2) self.files_by_language - For each language present, a list of
-            all files for each language.
+                all files for each language.
             3) self.language - The dominant language across all files.
             4) self.all_languages - A list of all languages across all files.
 
