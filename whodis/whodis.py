@@ -37,7 +37,8 @@ class WhoDis():
                 any subdirectories. Filtered files are not in the list.
             2) self.files_by_language - For each language present, a list of
                 all files for each language.
-            3) self.language - The dominant language across all files.
+            3) self.language - The dominant language across all files. Possible
+                values are: "go", "java", "js", "py", "rb".
             4) self.all_languages - A list of all languages across all files.
 
         Parameters
