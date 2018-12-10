@@ -14,11 +14,11 @@ FILTERED_DIRS = COMMON_FILTERS + GO_FILTERS + JAVA_FILTERS + \
                 JAVASCRIPT_FILTERS + PYTHON_FILTERS + RUBY_FILTERS
 
 FILE_EXTENSIONS = [
-    "py",  # Python
-    "js",  # JavaScript
-    "go",  # Go
-    "java",  # Java
-    "rb",  # Ruby
+    "py",
+    "js",
+    "go",
+    "java",
+    "rb",
 ]
 
 
