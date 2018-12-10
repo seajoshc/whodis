@@ -107,6 +107,7 @@ class WhoDis():
 
         for file in self.files:
             if "." in file:
+                # Get the file extension. Partition returns a 3-tuple.
                 extension = file.partition('.')[2]
                 if extension in FILE_EXTENSIONS:
                     if extension in breakdown:
