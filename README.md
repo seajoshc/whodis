@@ -54,4 +54,4 @@ WhoDis is very naive. It will recursively find all files in a path, filter out c
 Please look at the *_filters.py files, which should be quite easy to understand. The files getting filtered are in directories that are commonly associated with things like version control, building/packaging, and virtual environments. The reason for filtering is 1) to speed up WhoDis (e.g. a big .git can slow us down a lot), and 2) these directories usually contain files that are irrelevant/redundant to determining the programming languages being used. In short, filtered files shouldn't influence WhoDis' parsing.
 
 3. Why only support Go, Java, JavaScript, Python, and Ruby?
-I wrote WhoDis for use with another project that interacts with AWS Lambda. These languages are all usable by Lambda. Feel free to open a PR if you'd like additional language support!
+I wrote WhoDis for use with another project that interacts with AWS Lambda. These languages are all natively supported by Lambda. Feel free to open a PR if you'd like additional language support!
