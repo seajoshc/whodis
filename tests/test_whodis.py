@@ -48,7 +48,7 @@ def test_parse_with_valid_path_multi_lang(mockwalk):
             'application_controller.rb', 'sessions_controller.rb']),
         ('/app/models', [], ['blah.rb', ]),
         ('/app/assets', ['javascripts', ], []),
-        ('/app/assets', [], ['application.js', ])
+        ('/app/assets/javascripts', [], ['application.js', ])
     ]
     blah = WhoDis()
     blah.parse("/fake_path_yo")
@@ -95,3 +95,20 @@ def test_parse_with_no_source_code_raises_exception(mockwalk):
     blah = WhoDis()
     with pytest.raises(IOError):
         blah.parse(path)
+
+
+def test_parse_properly_filters_nested_directories(fs):
+    """
+    Make sure filters work properly.
+    For this test we use pyfakefs instead of mocking os.walk.
+    """
+    fs.create_file("/fake_path_yo/ok.py")
+    fs.create_file("/fake_path_yo/app/__pycache__/foo.py")
+    fs.create_file("/fake_path_yo/build/bar.rb")
+    fs.create_file("/fake_path_yo/coverage/baz.rb")
+    fs.create_file("/fake_path_yo/logs/whatever.txt")
+    blah = WhoDis()
+    blah.parse("/fake_path_yo")
+
+    assert len(blah.files) == 1
+    assert blah.language == "py"
