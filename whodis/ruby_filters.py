@@ -5,4 +5,5 @@ RUBY_FILTERS = [
     "rdoc",
     ".bundle",
     "vendor",
+    ".env",
 ]
