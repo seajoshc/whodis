@@ -1,3 +1,5 @@
 COMMON_FILTERS = [
-    ".git"
+    ".git",
+    "tmp",
+    "coverage",
 ]
