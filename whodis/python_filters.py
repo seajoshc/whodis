@@ -1,5 +1,5 @@
 PYTHON_FILTERS = [
-    "__pycache__",
+    "pycache",
     "build",
     "dist",
     "egg-info",
