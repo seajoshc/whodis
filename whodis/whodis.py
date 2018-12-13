@@ -72,7 +72,7 @@ class WhoDis():
         """
         files = []
         for _dirpath, dirnames, filenames in os.walk(path):
-            # First, remove any filtered directories.
+            # Skip walking certain directories to speed things up.
             for dir_to_filter in FILTERED_DIRS:
                 if dir_to_filter in dirnames:
                     dirnames.remove(dir_to_filter)
