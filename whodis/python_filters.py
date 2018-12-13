@@ -5,7 +5,7 @@ PYTHON_FILTERS = [
     "develop-eggs",
     "sdist",
     "wheels",
-    "pytest_cache",
+    ".pytest_cache",
     "env",
     "venv",
 ]
