@@ -9,6 +9,11 @@ Parses the contents of a source code directory and determines the programming la
 * Ruby
 
 # Usage
+Install from PyPI:
+```python
+pip install whodis
+```
+
 Import the module and create a new instance of WhoDis:
 ```python
 from whodis import WhoDis
