@@ -3,4 +3,5 @@ COMMON_FILTERS = [
     "tmp",
     "coverage",
     "build",
+    "logs",
 ]
